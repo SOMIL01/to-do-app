@@ -14,7 +14,7 @@ const Login = async (req,res) => {
         if(!user) {
             return res.json(jsonGenerate(
                     StatusCode.UNPROCESSABLE_ENTITY,
-                    "Username or password is incorrect"
+                    "Username is incorrect"
                 ));
         }
         const verified = bcrypt.compareSync(password,user.password);
@@ -22,7 +22,7 @@ const Login = async (req,res) => {
         if(!verified) {
             return res.json(jsonGenerate(
                 StatusCode.UNPROCESSABLE_ENTITY,
-                "Username or password is incorrect"
+                "Password is incorrect"
             ));
         }
         const token = Jwt.sign({userId:user._id},JWT_TOKEN_SECRET);
@@ -32,4 +32,5 @@ const Login = async (req,res) => {
     res.json(jsonGenerate(StatusCode.VALIDATION_ERROR, "Validation error", errors.mapped()))
 
 }
+
 export default Login;

@@ -6,4 +6,5 @@ export const StatusCode ={
     SUCCESS : 200,
     VALIDATION_ERROR : 201,
     UNPROCESSABLE_ENTITY:422,
+    AUTH_ERROR:204,
 }
