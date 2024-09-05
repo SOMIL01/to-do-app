@@ -7,17 +7,14 @@ import Jwt from 'jsonwebtoken'
 
 const Register = async (req,res) => {
     const errors = validationResult(req);
+    
     if(errors.isEmpty()){
       const {name, username, password, email} = req.body;
       
       const salt = await bcrypt.genSalt(10);
       const hashPassword = await bcrypt.hash(password,salt);
       
-      const userExist = await User.findOne({$or:[{
-        email:email
-      },{
-       username:username 
-      }]});
+      const userExist = await User.findOne({$or: [{email:email}, {username:username}] });
 
       if(userExist){
         return res.json(jsonGenerate(StatusCode.UNPROCESSABLE_ENTITY,"User or email already exist"))
