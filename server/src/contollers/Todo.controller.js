@@ -15,7 +15,6 @@ export const createTodo = async (req,res) => {
             )
         );
     }
-
     try {
         const result = await Todo.create({
             userId:req.userId,
