@@ -14,7 +14,7 @@ const apiRoute = express.Router();
 export const apiProtected = express.Router(); 
 
 apiRoute.post('/register', registerSchema, Register);
-apiRoute.post('/login',loginSchema,Login);
+apiRoute.post('/login', loginSchema, Login);
 
 //Protected APIs
 apiProtected.post(
@@ -36,5 +36,4 @@ apiProtected.post(
 );
 
 apiProtected.get("/todolist",getTodos);
-
 export default apiRoute;

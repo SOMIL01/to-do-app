@@ -32,7 +32,7 @@ const Register = async (req,res) => {
          res.json(jsonGenerate(StatusCode.SUCCESS,"Registration successfull",{userId:result._id,token:token}));
       } 
       catch(error) {
-         console.log(error)
+         return res.json(jsonGenerate(StatusCode.UNPROCESSABLE_ENTITY, "Could not delete", null));
       }
     }
     res.json(jsonGenerate(StatusCode.VALIDATION_ERROR, "Validation error", errors.mapped()))
